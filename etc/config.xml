@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Dreamsites_Performancestats>
+			<version>0.0.1</version>
+		</Dreamsites_Performancestats>
+	</modules>
+	<global>
+        <helpers>
+           <performancestats>
+               <class>Dreamsites_Performancestats_Helper</class>
+           </performancestats>           
+        </helpers>
+        <models>
+            <dreamsites_performancestats>
+                <class>Dreamsites_Performancestats_Model</class>
+            </dreamsites_performancestats>
+        </models>
+		<resources>
+            <performancestats_setup>
+                <setup>
+                    <module>Dreamsites_Performancestats</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </performancestats_setup>
+        </resources>
+    </global>
+    <crontab>
+        <jobs>
+            <dreamsites_performancestats_update_products>
+                <schedule>
+                    <cron_expr>0 * * * *</cron_expr> <!-- update products hourly stats if empty every hour -->
+                </schedule>
+                <run>
+                    <model>dreamsites_performancestats/cron::updateProductsRandomHour</model>
+                </run>
+            </dreamsites_performancestats_update_products>
+            <dreamsites_performancestats_reset_products>
+                <schedule>
+                    <cron_expr>0 2 * * *</cron_expr> <!-- reset products hourly stats every night at 2am -->
+                </schedule>
+                <run>
+                    <model>dreamsites_performancestats/cron::resetProductsRandomHour</model>
+                </run>
+            </dreamsites_performancestats_reset_products>
+        </jobs>
+    </crontab>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                   <modules>
+                     <performancestats after="Mage_Adminhtml">Dreamsites_Performancestats_Adminhtml</performancestats>
+                   </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>        
+<adminhtml>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <performancestats>
+                                        <title>Performance Statistics</title>
+                                    </performancestats>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>    
+</config>	

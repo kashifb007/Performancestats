@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+      <performancestats translate="label">
+      <label>Dreamsites</label>
+      <tab>general</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>2000</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>0</show_in_store>
+      <groups>
+        <performancestats translate="label" module="performancestats">
+            <label>Performance Statistics</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>-200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>0</show_in_store>
+            <expanded>1</expanded>
+            <fields>
+                <peak_start translate="label">
+                    <label>Peak Start</label>
+                    <frontend_type>select</frontend_type>                    
+                    <source_model>dreamsites_performancestats/system_config_source_hours</source_model>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                </peak_start>
+                <peak_end translate="label">
+                    <label>Peak End</label>
+                    <frontend_type>select</frontend_type>                    
+                    <source_model>dreamsites_performancestats/system_config_source_hours</source_model>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                </peak_end>
+            </fields>
+           </performancestats> 
+       </groups>
+        </performancestats>
+    </sections>
+</config>        
